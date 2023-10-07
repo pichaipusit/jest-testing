@@ -3,6 +3,7 @@ import { getProductById } from "./product";
 describe("product.js", () => {
   describe("getProductById", () => {
     let mockProduct1;
+
     beforeAll(() => {
       mockProduct1 = {
         id: 1,
@@ -35,6 +36,21 @@ describe("product.js", () => {
 
       // assert
       expect(result).toEqual(expectedResult);
+    });
+
+    it("should throws an error when the HTTP request fails", async () => {
+      // arrange
+      global.fetch = jest.fn(() => Promise.resolve({ ok: false, status: 404 }));
+
+      try {
+        // act
+        await getProductById(123);
+      } catch (error) {
+        // assert
+        expect(error.message).toMatch(
+          /Failed to fetch product with ID 123\. Status: 404/
+        );
+      }
     });
   });
 });
