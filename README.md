@@ -1,3 +1,5 @@
 # jest-testing
 this is for
-`yo install`
+```javascript
+npm install you
+```
