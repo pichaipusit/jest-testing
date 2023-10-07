@@ -1,4 +1,4 @@
-const { countNegativeValue } = require("./common");
+const { countNegativeValue, clearUpChaosToWord } = require("./common");
 
 describe("common.js", () => {
   describe("countNegativeValue", () => {
@@ -33,6 +33,33 @@ describe("common.js", () => {
 
       // act
       const result = countNegativeValue(mockArr);
+
+      // assert
+      expect(result).toBe(expectedResult);
+    });
+  });
+  describe("clearUpChaosToWord", () => {
+    it("should return 'Javascript'", () => {
+      // arrange
+      const mock1stWord = "java";
+      const mock2ndWord = "tpi%rcs";
+      const expectedResult = "Javascript";
+
+      // act
+      const result = clearUpChaosToWord(mock1stWord, mock2ndWord);
+
+      // assert
+      expect(result).toBe(expectedResult);
+    });
+
+    it("should return 'Countryside'", () => {
+      // arrange
+      const mock1stWord = "c%ountry";
+      const mock2ndWord = "edis";
+      const expectedResult = "Countryside";
+
+      // act
+      const result = clearUpChaosToWord(mock1stWord, mock2ndWord);
 
       // assert
       expect(result).toBe(expectedResult);
