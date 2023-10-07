@@ -1,4 +1,4 @@
-const { countNegativeValue, clearUpChaosToWord } = require("./common");
+import { countNegativeValue, clearUpChaosToWord } from "./common";
 
 describe("common.js", () => {
   describe("countNegativeValue", () => {
